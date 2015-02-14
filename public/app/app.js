@@ -28,7 +28,8 @@ app.config(function ($urlRouterProvider, $stateProvider) {
           return AdditivesService.getAdditive($stateParams.additiveNumber);
         }]
       },
-      controller: 'AdditivesController'
+      controller: 'AdditivesController',
+      controllerAs: 'adtv'
     })
     .state('additives.group', {
       url: '/group/:additiveGroup',
@@ -38,7 +39,8 @@ app.config(function ($urlRouterProvider, $stateProvider) {
           return AdditivesService.getGroup($stateParams.additiveGroup);
         }]
       },
-      controller: 'AdditivesController'
+      controller: 'AdditivesController',
+      controllerAs: 'adtv'
     })
     .state('search', {
       url: '/search/:searchTerm',

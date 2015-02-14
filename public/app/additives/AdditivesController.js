@@ -1,10 +1,12 @@
 'use strict';
 
 app.controller('AdditivesController', ['$scope', 'additives', function ($scope, additives) {
-  $scope.additives = additives;
+  var self = this;
 
-  $scope.currentTab = 'group-description';
-  $scope.isActiveTab = function (tabName) {
-    return tabName === $scope.currentTab;
+  self.additives = additives;
+  self.currentTab = 'group-description';
+
+  self.isActiveTab = function (tabName) {
+    return tabName === self.currentTab;
   };
 }]);

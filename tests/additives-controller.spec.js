@@ -1,7 +1,7 @@
 'use strict';
 
 describe('AdditivesController', function () {
-  var scope, controller;
+  var rootScope, controller;
   var additivesMock, AdditivesController;
 
   beforeEach(function () {
@@ -19,15 +19,15 @@ describe('AdditivesController', function () {
   });
 
   beforeEach(angular.mock.inject(function ($rootScope, $controller) {
-    scope = $rootScope.$new();
+    rootScope = $rootScope.$new();
     controller = $controller;
 
-    AdditivesController = $controller('AdditivesController', {
-      $scope: scope,
+    AdditivesController = $controller('AdditivesController as adtv', {
+      $scope: rootScope,
       additives: additivesMock
     });
 
-    scope.$digest();
+    rootScope.$digest();
   }));
 
   it('should exists', function () {
@@ -35,7 +35,7 @@ describe('AdditivesController', function () {
   });
 
   it('should contain all additives', function () {
-    expect(scope.additives).toEqual([
+    expect(rootScope.adtv.additives).toEqual([
       { 'additive': 'test1', 'slug': 'slug1' },
       { 'additive': 'test2', 'slug': 'slug2' },
       { 'additive': 'test3', 'slug': 'slug3' }
@@ -43,13 +43,14 @@ describe('AdditivesController', function () {
   });
 
   it('group-description should be active tab', function () {
-    expect(scope.currentTab).toBe('group-description');
-    expect(scope.isActiveTab('group-description')).toBeTruthy();
+    expect(rootScope.adtv.currentTab).toBe('group-description');
+    expect(rootScope.adtv.isActiveTab('group-description')).toBeTruthy();
   });
 
   it('should change active tab', function () {
-    scope.currentTab = 'group-list';
-    expect(scope.currentTab).toBe('group-list');
-    expect(scope.isActiveTab('group-list')).toBeTruthy();
+    rootScope.adtv.currentTab = 'group-list';
+
+    expect(rootScope.adtv.currentTab).toBe('group-list');
+    expect(rootScope.adtv.isActiveTab('group-list')).toBeTruthy();
   });
 });
