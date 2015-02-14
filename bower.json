@@ -1,0 +1,27 @@
+{
+  "name": "hranitelni-dobavki",
+  "version": "1.0.0",
+  "authors": [
+    "Svilen Popov <svil4ok@gmail.com>"
+  ],
+  "description": "Хранителни добавки",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/assets/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.8.3",
+    "foundation": "~5.5.0",
+    "angular": "~1.3.9",
+    "angular-resource": "~1.3.9",
+    "angular-ui-router": "~0.2.13",
+    "foundation-apps": "~1.0.2",
+    "angular-foundation": "~0.5.1",
+    "ngSmoothScroll": "~1.7.1"
+  }
+}

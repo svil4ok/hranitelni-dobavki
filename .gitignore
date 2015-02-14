@@ -1,0 +1,21 @@
+.DS_Store
+
+# Node.js
+logs
+*.log
+node_modules
+
+# Grunt
+.grunt
+.stylishcolors
+
+# Bower
+app/assets/libs
+
+# SCSS
+.sass-cache
+*.css.map
+
+# Sublime
+*.sublime-project
+*.sublime-workspace

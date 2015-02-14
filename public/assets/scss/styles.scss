@@ -1,0 +1,36 @@
+@import 'settings';
+@import 'foundation';
+@import 'mixins';
+@import 'header';
+@import 'offcanvas';
+@import 'home';
+@import 'additives';
+@import 'faq';
+
+.main-content {
+  margin: rem-calc(44 0 22);
+  padding-bottom: 22px;
+
+  h2,
+  h3,
+  h4 {
+    font-style: normal;
+    font-weight: 300;
+  }
+}
+
+.additive-safe { color: $color-safe !important; }
+.additive-cut-back { color: $color-cut-back !important; }
+.additive-caution { color: $color-caution !important; }
+.additive-avoid { color: $color-avoid !important; }
+
+.additive-info {
+  img {
+    margin-right: 10px;
+    padding-top: 5px;
+  }
+
+  div {
+    overflow: hidden;
+  }
+}

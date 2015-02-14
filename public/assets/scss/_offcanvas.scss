@@ -1,0 +1,29 @@
+aside {
+  padding: rem-calc(30) rem-calc(40);
+
+  > nav { margin-top: rem-calc(30); }
+  
+  ul {
+    margin-top: rem-calc(30);
+
+    > li {
+      display: block;
+      width: rem-calc(200);
+      margin: rem-calc(6) 0;
+      word-wrap: inherit;
+
+      a {
+        height: rem-calc(26);
+        color: $color-white;
+        line-height: 26px;
+
+        &:hover { color: $color-off-canvas-link-hover; }
+      }
+    }
+  }
+
+  .heading {
+    color: $color-off-canvas-heading;
+    text-transform: lowercase;
+  }
+}

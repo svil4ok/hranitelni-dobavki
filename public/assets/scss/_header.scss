@@ -1,0 +1,72 @@
+header {
+  .logo strong {
+    position: relative;
+    width: 30px; 
+    height: 17.32px;
+    margin: 22px 5px 0;
+    border-right: solid 3px $color-logo;
+    border-left: solid 3px $color-logo;
+    background-color: $color-white;
+
+    &:before,
+    &:after {
+      @include transform(scaleY(0.5774) rotate(-45deg));
+      position: absolute;
+      left: 1.3934px;
+      width: 21.21px;
+      height: 21.21px;
+      background-color: inherit;
+      content: '';
+      z-index: 1;
+    }
+
+    &:before {
+      top: -10.6066px;
+      border-top: solid 4.2426px $color-logo;
+      border-right: solid 4.2426px $color-logo;
+    }
+
+    &:after {
+      bottom: -10.6066px;
+      border-bottom: solid 4.2426px $color-logo;
+      border-left: solid 4.2426px $color-logo;
+    }
+  }
+
+  .logo span {
+    position: relative;
+    margin-right: 15px !important;
+    margin-left: -25px !important;
+    z-index: 5;
+  }
+
+  .logo:hover > a { color: $color-logo; }
+  
+  &.additives-header {
+    position: relative;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+    &:before,
+    &:after {
+      position: absolute; 
+      top: 50%;
+      right: 10px;
+      bottom: 0;
+      left: 10px;
+      border-radius: 100px / 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      content: '';
+      z-index: -1;
+    }
+
+    &:after {
+      @include transform(skew(8deg) rotate(3deg));
+      right: 10px; 
+      left: auto;
+    }
+  }
+
+  .toggle-topbar.menu-icon a {
+    padding: 0 rem-calc(20) !important;
+  }
+}

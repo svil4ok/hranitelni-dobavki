@@ -1,0 +1,47 @@
+<section class="additives-details ">
+  <div class="header">
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>{{ additives.number }} - {{ additives.name_bg }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <h3 class="subheader">{{ additives.name_en }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="row">
+      <div class="large-12 columns">
+        <p>{{ additives.description }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="small-block-grid-1">
+          <li>
+            <strong>Група:</strong>
+            <a ui-sref="additives.group({ additiveGroup: additives.category.slug })">
+              {{ additives.category.name }}
+            </a>
+          </li>
+          <li>
+            <strong>Тип:</strong> {{ additives.safety | displaySafety }}
+          </li>
+          <li>
+            <strong>Използван в</strong> {{ additives.used_in }}
+          </li>
+          <li ng-class="{ hide: !additive.warning }">
+            <strong>Внимание:</strong> {{ additives.warning | lowercase }}
+          </li>
+          <li ng-class="{ hide: !additive.banned }">
+            <strong>Забранен</strong> {{ additives.banned }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,7 @@
+---
+globals:
+  angular: 1
+  app: 1
+plugins:
+  - angular
+  - one-variable-per-var

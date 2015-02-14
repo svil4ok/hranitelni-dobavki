@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="bg" ng-app="HranitelniDobavki">
+<head>
+  <title>Хранителни добавки</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700" rel="stylesheet" type="text/css" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.min.css"/>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <base href="/" />
+</head>
+<body>
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      <header class="contain-to-grid" ng-class="{ 'additives-header': !$state.is('home') }">
+        <nav class="top-bar" data-topbar role="navigation">
+          <ul class="title-area">
+            <li class="name">
+              <h1 class="logo">
+                <a ui-sref="home" class="" style="padding-left: 10px;">
+                  <strong class="left"></strong>
+                  <span>E</span>
+                  хранителни добавки
+                </a>
+              </h1>
+            </li>
+            <li class="toggle-topbar menu-icon">
+              <a href="javascript:;" class="right-off-canvas-toggle menu-icon">
+                <i class="fa fa-bars"></i>
+              </a>
+            </li>
+          </ul>
+          <section class="top-bar-section">
+            <ul class="right">
+              <li>
+                <a class="right-off-canvas-toggle menu-icon" href="javascript:;">
+                  <i class="fa fa-bars"></i>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </nav>
+      </header>
+      <aside class="right-off-canvas-menu" ng-controller="NavController as nv">
+        <nav>
+          <ul>
+            <li><a ui-sref="about" class="right-off-canvas-toggle">За проекта</a></li>
+            <li><a ui-sref="faq" class="right-off-canvas-toggle">Често задавани въпроси</a></li>
+            <li><a ui-sref="about" class="right-off-canvas-toggle">За проекта</a></li>
+          </ul>
+          <h4 class="heading">Групи адитиви</h4>
+          <ul>
+            <li ng-repeat="additive in nv.additives">
+              <a ui-sref="additives.group({ additiveGroup: additive.slug })" class="right-off-canvas-toggle">
+                {{ additive.name }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <div ui-view></div>
+      <a class="exit-off-canvas"></a>
+    </div>
+  </div>
+
+  <!--
+  <script type="text/javascript" src="/assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="/assets/js/foundation.min.js"></script> 
+  <script type="text/javascript" src="/assets/js/app.min.js"></script>
+  -->
+
+  <script type="text/javascript" src="/assets/libs/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="/assets/libs/angular/angular.js"></script>
+  <script type="text/javascript" src="/assets/libs/angular-resource/angular-resource.js"></script>
+  <script type="text/javascript" src="/assets/libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="/assets/libs/ngSmoothScroll/angular-smooth-scroll.js"></script>
+
+  <script type="text/javascript" src="/app/common/angular-foundation/angular-foundation.js"></script>
+  <script type="text/javascript" src="/app/common/angular-foundation/modules/accordion.js"></script>
+  <script type="text/javascript" src="/app/common/angular-foundation/modules/off-canvas.js"></script>
+
+  <script type="text/javascript" src="/assets/js/app.min.js"></script>
+
+</body>
+</html>

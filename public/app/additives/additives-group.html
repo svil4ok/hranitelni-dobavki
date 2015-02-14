@@ -1,0 +1,52 @@
+<section class="additives-details group">
+  <div class="header">
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>{{ additives.name }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="tabs-nav">
+      <ul class="small-block-grid-2">
+        <li ng-class="{ 'tab-active': isActiveTab('group-description') }">
+          <a href="javascript:;" class="text-center" ng-click="currentTab = 'group-description'">Информация</a>
+        </li>
+        <li ng-class="{ 'tab-active': isActiveTab('group-list') }">
+          <a href="javascript:;" class="text-center" ng-click="currentTab = 'group-list'">Списък</a>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="tabs">
+          <div class="tab" ng-class="{ active: isActiveTab('group-description') }">
+            <group-information group-name="{{ additives.slug }}" />
+          </div>
+          <div class="tab" ng-class="{ active: isActiveTab('group-list') }">
+            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+              <li ng-repeat="additive in additives.additives">
+                <div class="additive-info">
+                  <span ng-switch on="additive.safety">
+                    <img src="/assets/img/safe.gif" alt="additive-safe" class="left" ng-switch-default />
+                    <img src="/assets/img/caution.gif" alt="additive-caution" class="left" ng-switch-when="caution" />
+                    <img src="/assets/img/caution.gif" alt="additive-caution" class="left" ng-switch-when="not_for_vegan" />
+                    <img src="/assets/img/avoid.gif" alt="additive-avoid" class="left" ng-switch-when="avoid" />
+                  </span>
+                  <div>
+                    <a ui-sref="additives.details({ additiveNumber: additive.number })">
+                      <strong>{{ additive.number }} - {{ additive.name_bg }}</strong>
+                    </a>
+                    <p><em>{{ additive.name_en }}</em></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

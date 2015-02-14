@@ -1,0 +1,51 @@
+.additives-details {
+  > .header {
+    padding: rem-calc(20 0);
+    background-color: #e15258;
+
+    h2 { color: $color-white; }
+
+    h3 { color: #f2b9bd; }
+  }
+
+  > .content {
+    margin-top: rem-calc(20);
+  }
+
+  &.group > .content {
+    margin-top: 0;
+  }
+}
+
+.tabs-nav {
+  margin-bottom: rem-calc(20);
+  border-bottom: 1px solid #eeeeee;
+  background: #f5f5f5;
+
+  li {
+    padding-bottom: 0;
+
+    > a {
+      display: block;
+      height: 45px;
+      padding-top: 10px;
+      color: #433c3d;
+      font-weight: 500;
+      text-transform: lowercase;
+    }
+  }
+
+  .tab-active {
+    background: #eaeaea;
+
+    > a {
+      font-weight: bold;
+    }
+  }
+}
+
+.tabs > .tab {
+  display: none;
+  
+  &.active { display: block; }
+}

@@ -1,0 +1,18 @@
+@mixin font-size($size-value: 12) {
+  font-size: $size-value + px; //fallback for old browsers
+  font-size: (0.125 * $size-value) + rem;
+}
+
+@mixin background-size($bg-size) {
+  -webkit-background-size: $bg-size;
+     -moz-background-size: $bg-size;
+       -o-background-size: $bg-size;
+          background-size: $bg-size;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+     -moz-transform: $transform;
+      -ms-transform: $transform;
+          transform: $transform;
+}

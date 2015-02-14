@@ -1,0 +1,98 @@
+<div ng-controller="HomeController">
+  <section class="homepage-welcome">
+    <div class="row">
+      <div class="large-8 large-centered columns">
+        <div class="row collapse postfix-round">
+          <div class="home-search">
+            <form name="additiveSearch">
+            <div class="small-9 columns">
+              <input type="text" placeholder="Име на хранителната добавка или неговият номер" ng-model="searchTerm" ng-pattern="/^[a-zA-Z0-9]*$/" required />
+            </div>
+            <div class="small-3 columns">
+              <a href="javascript:;" ng-click="search()"  class="button alert postfix radius show-for-medium-up">
+                Търсене
+              </a>
+              <a href="javascript:;" ng-click="search()" class="button alert postfix show-for-small-only">
+                <i class="fa fa-search"></i>
+              </a>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-content">
+    <div class="row text-center">
+      <div class="large-12 columns">
+        <h2>Научете повече за хранителните добавки</h2>
+        <h4 class="subheader">
+        "Share A Car" вярва, че да пътуваш може да бъде евтино, зелено и забавно. Като споделяте пътуването си, Вие пестите гориво и пари, намалявате вредните емисии и се запознавате с нови приятели.</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <p>Като цяло добре е да избягвате следнитехранителни добавки:</p>
+        <ul>
+          <li>Аспартам (Aspartame), Захарини (Saccharines)</li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <p>И не забравяйте да намалите употребата на сол и захар, които могат да създадат повече проблеми отколкото всички останали адитиви.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3 class="subheader">Нива на безопастност</h3>
+
+        <ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-3">
+          <li>
+            <h5 class="additive-safe"><img src="/assets/img/safe.gif" alt="additive-safe" /> <b>Безопасен</b></h5>
+            <p>Няма данни конкретната хранителна добавка да причинява нежелани странични ефекти</p>
+          </li>
+          <li>
+            <h5 class="additive-caution"><img src="/assets/img/caution.gif" alt="additive-caution" /> <b>Внимавайте</b></h5>
+            <p>Внимавайте, когато закупувате стоки, съдържащи тези добавки!</p>
+          </li>
+          <li>
+            <h5 class="additive-avoid"><img src="/assets/img/avoid.gif" alt="additive-avoid" /> <b>Избягвайте</b></h5>
+            <p>Небезопасен за количествата на потреблението или не е тестван достатъчно.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <accordion close-others="oneAtATime">
+        <accordion-group ng-repeat="categories in additives" is-open="isOpen" id="{{ categories.slug }}">
+          <accordion-heading scroll-to="{{ categories.slug }}">
+            <i class="right" ng-class="{'fa fa-arrow-circle-o-down': isOpen, 'fa fa-arrow-circle-o-right': !isOpen}"></i>
+            <strong>{{ categories.name }}</strong>
+            <em>{{ categories.range }}</em>
+          </accordion-heading>
+          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+            <li ng-repeat="additive in categories.additives">
+              <div class="additive-info">
+                <span ng-switch on="additive.safety">
+                  <img src="/assets/img/safe.gif" alt="additive-safe" class="left" ng-switch-default />
+                  <img src="/assets/img/caution.gif" alt="additive-caution" class="left" ng-switch-when="caution" />
+                  <img src="/assets/img/caution.gif" alt="additive-caution" class="left" ng-switch-when="not_for_vegan" />
+                  <img src="/assets/img/avoid.gif" alt="additive-avoid" class="left" ng-switch-when="avoid" />
+                </span>
+                <div>
+                  <a ui-sref="additives.details({ additiveNumber: additive.number })">
+                    <strong>{{ additive.number }} - {{ additive.name_bg }}</strong>
+                  </a>
+                  <p><em>{{ additive.name_en }}</em></p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </accordion-group>
+      </accordion>
+    </div>
+  </section>
+</div>

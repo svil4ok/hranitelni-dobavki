@@ -1,0 +1,22 @@
+.toc {
+  margin-top: rem-calc(40);
+}
+
+.faq {
+  @include panel();
+  padding: 0;
+  border-color: #e6e6e6;
+  background-color: #fafafa;
+
+  > h5 {
+    padding: rem-calc(15);
+    border-bottom: 1px solid #dddddd;
+    background: $color-white;
+    color: #8b8b8b;
+    font-weight: bold;
+  }
+
+  > ul {
+    padding: rem-calc(5 15);
+  }
+}
