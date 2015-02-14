@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('NavController', ['$scope', 'AdditivesService', function ($scope, AdditivesService) {
+app.controller('NavController', ['AdditivesService', function (AdditivesService) {
   var self = this;
 
   AdditivesService.getAll().$promise.then(function (data) {

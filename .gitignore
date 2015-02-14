@@ -8,6 +8,7 @@ node_modules
 # Grunt
 .grunt
 .stylishcolors
+coverage/
 
 # Bower
 app/assets/libs

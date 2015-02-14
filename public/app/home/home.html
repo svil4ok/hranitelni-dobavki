@@ -1,18 +1,18 @@
-<div ng-controller="HomeController">
+<div>
   <section class="homepage-welcome">
     <div class="row">
       <div class="large-8 large-centered columns">
         <div class="row collapse postfix-round">
           <div class="home-search">
-            <form name="additiveSearch">
+            <form name="home.additiveSearch">
             <div class="small-9 columns">
-              <input type="text" placeholder="Име на хранителната добавка или неговият номер" ng-model="searchTerm" ng-pattern="/^[a-zA-Z0-9]*$/" required />
+              <input type="text" placeholder="Име на хранителната добавка или неговият номер" ng-model="home.searchTerm" ng-pattern="/^[a-zA-Z0-9]*$/" required />
             </div>
             <div class="small-3 columns">
-              <a href="javascript:;" ng-click="search()"  class="button alert postfix radius show-for-medium-up">
+              <a href="javascript:;" ng-click="home.search()"  class="button alert postfix radius show-for-medium-up">
                 Търсене
               </a>
-              <a href="javascript:;" ng-click="search()" class="button alert postfix show-for-small-only">
+              <a href="javascript:;" ng-click="home.search()" class="button alert postfix show-for-small-only">
                 <i class="fa fa-search"></i>
               </a>
             </div>
@@ -67,7 +67,7 @@
     </div>
     <div class="row">
       <accordion close-others="oneAtATime">
-        <accordion-group ng-repeat="categories in additives" is-open="isOpen" id="{{ categories.slug }}">
+        <accordion-group ng-repeat="categories in home.additives" is-open="isOpen" id="{{ categories.slug }}">
           <accordion-heading scroll-to="{{ categories.slug }}">
             <i class="right" ng-class="{'fa fa-arrow-circle-o-down': isOpen, 'fa fa-arrow-circle-o-right': !isOpen}"></i>
             <strong>{{ categories.name }}</strong>

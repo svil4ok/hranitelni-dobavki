@@ -6,7 +6,7 @@ describe('when state change', function () {
 
   beforeEach(angular.mock.module('HranitelniDobavki', function ($provide) {
     $provide.value('AdditivesService', additivesServiceMock = {});
-    additivesServiceMock.getAdditive = jasmine.createSpy('getAdditive').and.returnValue('additiveData');
+    additivesServiceMock.getAdditive = jasmine.createSpy('getAdditive').and.returnValue({ 'number': 'E100'});
   }));
 
   beforeEach(function () {
@@ -59,7 +59,7 @@ describe('when state change', function () {
     state.go('additives.details', {});
     scope.$digest();
 
-    expect(injector.invoke(state.current.resolve.additives)).toBe('additiveData');
+    expect(injector.invoke(state.current.resolve.additives)).toEqual({ 'number': 'E100'});;
   });
 
   it('should redirect to home', function() {

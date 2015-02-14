@@ -1,15 +1,17 @@
 'use strict';
 
-app.controller('HomeController', function ($scope, $state, AdditivesData) {
-  $scope.oneAtATime = true;
+app.controller('HomeController', ['$scope', '$state', 'AdditivesService', function ($scope, $state, AdditivesService) {
+  var self = this;
 
-  $scope.search = function () {
-    if (angular.isDefined($scope.searchTerm) && $scope.additiveSearch.$valid) {
-      $state.go('search', {searchTerm: $scope.searchTerm});
+  self.oneAtATime = true;
+
+  AdditivesService.getAll().$promise.then(function (data) {
+    self.additives = data.categories;
+  });
+
+  self.search = function () {
+    if (angular.isDefined(self.searchTerm) && self.additiveSearch.$valid) {
+      $state.go('search', {searchTerm: self.searchTerm});
     }
   };
-
-  AdditivesData.query(function (data) {
-    $scope.additives = data.categories;
-  });
-});
+}]);
