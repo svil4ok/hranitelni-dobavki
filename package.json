@@ -22,7 +22,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start karma.config.js --browsers Firefox --single-run "
+    "test": "./node_modules/.bin/karma start karma.config.js --browsers PhantomJS --single-run "
   },
   "devDependencies": {
     "chalk": "^0.5.1",
