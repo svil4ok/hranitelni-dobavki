@@ -6,7 +6,8 @@ app.directive('groupInformation', function () {
     link: function (scope, elem, attrs) {
       var tpls = {
         colourings: 'colourings.tpl.html',
-        preservatives: 'preservatives.tpl.html'
+        preservatives: 'preservatives.tpl.html',
+        noInfo: 'no-info.tpl.html',
       };
 
       attrs.$observe('groupName', function (val) {
@@ -14,7 +15,12 @@ app.directive('groupInformation', function () {
           return;
         }
 
-        scope.tplUrl = '/data/tpls/' + tpls[val];
+        if (angular.isUndefined(tpls[val])) {
+          scope.tplUrl = '/data/tpls/' + tpls.noInfo;
+        }
+        else {
+          scope.tplUrl = '/data/tpls/' + tpls[val];
+        }
       });
     },
     template: '<div ng-include src="tplUrl" include-replace></div>'
