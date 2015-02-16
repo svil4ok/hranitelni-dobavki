@@ -19,7 +19,6 @@ app.service('AdditivesService', ['AdditivesData', '$q', function (AdditivesData,
   this.getAdditive = function (additiveNumber) {
     var deferred = $q.defer();
 
-    // self.getAll().then(function (additives) {
     AdditivesData.query(function (additives) {
       var additive = self.searchAdditive(additives, additiveNumber.toLowerCase());
 
@@ -51,6 +50,49 @@ app.service('AdditivesService', ['AdditivesData', '$q', function (AdditivesData,
     return deferred.promise;
   };
 
+  this.search = function (searchFor) {
+    var deferred = $q.defer();
+
+    if (!/^[a-zA-Z0-9\u0400-\u04FF]*$/.test(searchFor)) {
+      deferred.reject({'error': 'Wrong input data!'});
+      return deferred.promise;
+    }
+
+    AdditivesData.query(function (additives) {
+      var output = [];
+
+      for (var i = additives.categories.length - 1; i >= 0; i -= 1) {
+        for (var j = additives.categories[i].additives.length - 1; j >= 0; j -= 1) {
+          var number = additives.categories[i].additives[j].number;
+          var nameBg = additives.categories[i].additives[j].name_bg;
+          var nameEn = additives.categories[i].additives[j].name_en;
+
+          if (self.contains(number, searchFor) ||
+              self.contains(nameBg, searchFor) ||
+              self.contains(nameEn, searchFor)) {
+
+            var additive = additives.categories[i].additives[j];
+            additive.category = {
+              name: additives.categories[i].name,
+              slug: additives.categories[i].slug
+            };
+
+            output.push(additive);
+          }
+        }
+      }
+
+      if (output.length) {
+        deferred.resolve(output.reverse());
+      }
+      else {
+        deferred.resolve({'error': 'Nothing found!'});
+      }
+    });
+
+    return deferred.promise;
+  };
+
   this.searchAdditive = function (additives, additiveNumber) {
     for (var i = additives.categories.length - 1; i >= 0; i -= 1) {
       for (var j = additives.categories[i].additives.length - 1; j >= 0; j -= 1) {
@@ -73,5 +115,9 @@ app.service('AdditivesService', ['AdditivesData', '$q', function (AdditivesData,
         return additives.categories[i];
       }
     }
+  };
+
+  this.contains = function (r, s) {
+    return r.toLowerCase().indexOf(s.toLowerCase()) !== -1;
   };
 }]);

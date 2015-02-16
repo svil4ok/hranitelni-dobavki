@@ -7,7 +7,7 @@ app.directive('groupInformation', function () {
       var tpls = {
         colourings: 'colourings.tpl.html',
         preservatives: 'preservatives.tpl.html',
-        noInfo: 'no-info.tpl.html',
+        noInfo: 'no-info.tpl.html'
       };
 
       attrs.$observe('groupName', function (val) {

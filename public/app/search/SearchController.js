@@ -1,46 +1,21 @@
 'use strict';
 
-app.controller('SearchController', function ($scope, $state, $stateParams, AdditivesData) {
-  var regexp = /^[a-zA-Z0-9]*$/;
+app.controller('SearchController', ['$scope', '$state', 'searchTerm', 'additives',
+function ($scope, $state, searchTerm, additives) {
+  var self = this;
+  var resultMessage = 'Не бяха намерени резултати за "' + searchTerm + '"';
+  var list = false;
 
-  if (!regexp.test($stateParams.searchTerm)) {
-    $state.go('home');
+  if (angular.isUndefined(additives.error) && searchTerm) {
+    list = true;
+    resultMessage = 'Показване на резултати за "' + searchTerm + '"';
   }
 
-  AdditivesData.query(function (additives) {
-    angular.forEach(additives.categories, function (category) {
-      angular.forEach(category.additives, function (additive) {
-        if (angular.equals(additive.number, $stateParams.searchTerm) ||
-            angular.equals(additive.name_bg, $stateParams.searchTerm) ||
-            angular.equals(additive.name_en, $stateParams.searchTerm)) {
-          additive.category = category.name;
-          $scope.additivesList.push(additive);
-        }
-      });
-    });
-  });
+  this.list = list;
+  this.additives = additives;
+  this.resultMessage = resultMessage;
 
-  //$scope.additivesList = results;
-  console.log($scope.additivesList);
-  $scope.searchTerm = $stateParams.searchTerm;
-});
-
-
-app.directive('searchResults', [function () {
-  return {
-    scope: {
-      results: '='
-    },
-    restrict: 'E',
-    link: function (scope, elem, attrs) {
-      console.log('Scope');
-      console.log(scope);
-
-      console.log('Elem');
-      console.log(elem);
-
-      console.log('Attrs');
-      console.log(attrs);
-    }
+  this.searchSubmit = function () {
+    $state.go('search', {searchTerm: self.searchTerm});
   };
 }]);

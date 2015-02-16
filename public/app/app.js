@@ -44,8 +44,17 @@ app.config(function ($urlRouterProvider, $stateProvider) {
     })
     .state('search', {
       url: '/search/:searchTerm',
-      templateUrl: 'app/search/search.html',
-      controller: 'SearchController'
+      templateUrl: 'app/search/search-results.html',
+      resolve: {
+        searchTerm: ['$stateParams', function ($stateParams) {
+          return $stateParams.searchTerm.trim();
+        }],
+        additives: ['$stateParams', 'AdditivesService', function ($stateParams, AdditivesService) {
+          return AdditivesService.search($stateParams.searchTerm.trim());
+        }]
+      },
+      controller: 'SearchController',
+      controllerAs: 'srch'
     })
     .state('about', {
       url: '/about',

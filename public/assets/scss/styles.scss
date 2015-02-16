@@ -19,6 +19,8 @@
   }
 }
 
+.no-bottom-padding { padding-bottom: 0 !important; }
+
 .additive-safe { color: $color-safe !important; }
 .additive-cut-back { color: $color-cut-back !important; }
 .additive-caution { color: $color-caution !important; }

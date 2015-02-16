@@ -1,0 +1,56 @@
+<section class="additives-details">
+  <div class="header">
+    <div class="row">
+      <div class="large-12 columns">
+        <h2>{{ srch.resultMessage }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="row" class="hide" ng-show="srch.list">
+      <div class="large-12 columns">
+        <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+          <li ng-repeat="additive in srch.additives">
+            <div class="additive-info">
+              <span ng-switch on="additive.safety">
+                <img src="/assets/img/safe.gif" alt="additive-safe" class="left" ng-switch-default />
+                <img src="/assets/img/caution.gif" alt="additive-caution" class="left" ng-switch-when="caution" />
+                <img src="/assets/img/caution.gif" alt="additive-caution" class="left" ng-switch-when="not_for_vegan" />
+                <img src="/assets/img/avoid.gif" alt="additive-avoid" class="left" ng-switch-when="avoid" />
+              </span>
+              <div>
+                <a ui-sref="additives.details({ additiveNumber: additive.number })">
+                  <strong>{{ additive.number }} - {{ additive.name_bg }}</strong>
+                </a>
+                <p><em>{{ additive.name_en }}</em></p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="panel radius no-bottom-padding">
+          <form ng-submit="srch.searchSubmit()">
+            <div class="row">
+              <div class="large-12 columns">
+                <div class="row collapse">
+                  <div class="small-10 columns">
+                    <input type="text" placeholder="Име на хранителната добавка или нейният номер"
+                      ng-model="srch.searchTerm" ng-pattern="/^[a-zA-Z0-9\u0400-\u04FF]*$/" required />
+                  </div>
+                  <div class="small-2 columns">
+                    <a href="javascript:;" ng-click="srch.searchSubmit()" class="button alert postfix">
+                      <i class="fa fa-search"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
